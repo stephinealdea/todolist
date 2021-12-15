@@ -1,0 +1,49 @@
+@mixin btn-config($btnColor, $btnBgColor){
+    color: $btnColor;
+    background-color: $btnBgColor;
+}
+
+@mixin btn-config-hover($btnHoverColor, $btnHoverBgColor){
+    &:hover {
+        color: $btnHoverColor;
+        background-color: $btnHoverBgColor;
+    }
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+    @include lib-font-size(1.6);
+    height: 50px;
+    min-width: 100px;
+    padding: 16px;
+    border: none;
+    border-radius: 5px;
+    font-family: $primary-font;
+    font-weight: 400;
+    cursor: pointer;
+
+    &:hover {
+        @include transition(.3s ease);
+    }
+
+    &.primary {
+        @include btn-config($persimmon, $concrete);
+        @include btn-config-hover($concrete, $secondary-color);
+
+        &.dark {
+            @include btn-config($white, $secondary-color);
+            @include btn-config-hover($white, $primary-color);
+        }
+    }
+
+    &.secondary {
+        @include btn-config($concrete, $codgray);
+        @include btn-config-hover($codgray, $concrete);
+
+        &.light {
+            @include btn-config($white, $primary-color);
+            @include btn-config-hover($concrete, $codgray);
+        }
+    }
+}

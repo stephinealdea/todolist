@@ -1,0 +1,9 @@
+.header {
+    @include prefix-display();
+    @include prefix-box-align(center);
+    @include prefix-justify-content(space-between);
+    @include max-width-config(800px);
+    padding: 0 20px;
+    color: whitesmoke;
+    background-color: $persimmon;
+}

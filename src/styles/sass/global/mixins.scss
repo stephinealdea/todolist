@@ -1,0 +1,254 @@
+
+//  Mixins
+//  ---------------------------------------------
+
+@mixin lib-font-size($sizeValue: 1.6) {
+    font-size: ($sizeValue * 10) + px;
+    font-size: $sizeValue + rem;
+}
+
+// Max Values
+@mixin max-width-config($max-value) {
+    max-width: $max-value;
+    margin: 0 auto;
+}
+
+// Hide Display
+@mixin visibility-hidden() {
+    height: 0;
+    visibility: hidden;
+}
+
+@mixin visually-hidden() {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+@mixin visually-hidden-reset() {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+//  Box Sizing
+@mixin box-sizing($boxValue) {
+    -webkit-box-sizing: $boxValue;
+    -moz-box-sizing: $boxValue;
+    box-sizing: $boxValue;
+}
+
+//  Transform
+@mixin transform($transformValue) {
+    -webkit-transform: $transformValue;
+    -moz-transform: $transformValue;
+    -ms-transform: $transformValue;
+    -o-transform: $transformValue;
+    transform: $transformValue;
+}
+
+//  Transition
+@mixin transition($transitionValue) {
+    -webkit-transition: $transitionValue;
+    -moz-transition: $transitionValue;
+    -o-transition: $transitionValue;
+    transition: $transitionValue;
+}
+
+@mixin clearfix(){
+    &:after {
+        display: block;
+        height: 0;
+        font-size: 0;
+        content: " ";
+        clear: both;
+    }
+}
+
+// Normalize box-model properties
+@mixin normalize() {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+@mixin rounded($radius: 2px) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin circle($radius: 50%) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin hcenter() {
+    margin: 0 auto;
+}
+
+@mixin vcenter() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin text-shadow() {
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
+}
+
+@mixin drop-shadow() {
+    filter: drop-shadow(3px 3px 1px rgba(0,0,0,0.3));
+}
+
+@mixin background-hover() {
+    background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 77.08%);
+}
+
+// When using ::before and ::after you'll always need these three
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+    $padding: unquote( ( $y / $x ) * 100 + '%' );
+    @if $pseudo {
+        &:before {
+            @include pseudo($pos: relative);
+            width: 100%;
+            padding-top: $padding;
+        }
+    } @else {
+        padding-top: $padding;
+    }
+}
+
+// Just specify it's colour, how big you want it, the direction it's going to come out of your element and you're done!
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute){
+    @include pseudo($pos: $position);
+    width: 0;
+    height: 0;
+    @if $direction == down {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+        margin-top: 0;
+    } @else if $direction == up {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+        margin-bottom: 0;
+    } @else if $direction == right {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+        margin-right: -$size;
+    } @else if  $direction == left {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+        margin-left: -$size;
+    }
+}
+
+// Flex layout
+@mixin prefix-display() {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+@mixin prefix-flex($flexValue) {
+    -ms-flex: $flexValue;
+    -webkit-flex: $flexValue;
+    flex: $flexValue;
+}
+
+@mixin prefix-flex-grow(
+    $flexGrowValue: 0
+) {
+    -webkit-flex-grow: $flexGrowValue;
+    flex-grow: $flexGrowValue;
+}
+
+@mixin prefix-flex-shrink (
+    $flexShrinkValue: 1
+) {
+    -webkit-flex-shrink: $flexShrinkValue;
+    flex-shrink: $flexShrinkValue;
+}
+
+@mixin prefix-flex-basis (
+    $flexBasisValue: auto
+) {
+    -webkit-flex-basis: $flexBasisValue;
+    flex-basis: $flexBasisValue;
+}
+
+@mixin prefix-flex-wrap (
+    $flexBasisValue: wrap
+) {
+    -webkit-flex-wrap: $flexBasisValue;
+    flex-wrap: $flexBasisValue;
+}
+
+@mixin prefix-flex-direction (
+    $flexDirectionValue: column
+) {
+    -webkit-flex-direction: $flexDirectionValue;
+    -ms-flex-direction: $flexDirectionValue;
+    flex-direction: $flexDirectionValue;
+}
+
+@mixin prefix-order (
+    $flexOrderValue: 0
+) {
+    -ms-flex-order: $flexOrderValue;
+    -webkit-order: $flexOrderValue;
+    order: $flexOrderValue;
+}
+
+@mixin prefix-box-align (
+    $flexBoxAlignValue: stretch
+) {
+    -webkit-align-items: $flexBoxAlignValue;
+    -ms-align-items: $flexBoxAlignValue;
+    align-items: $flexBoxAlignValue;
+}
+
+@mixin prefix-appearance (
+    $flexAppearanceValue: none
+) {
+    -webkit-appearance: $flexAppearanceValue;
+    -moz-appearance: $flexAppearanceValue;
+    appearance: $flexAppearanceValue;
+}
+
+@mixin prefix-column-count (
+    $flexColumnCountValue
+) {
+    -webkit-column-count: $flexColumnCountValue;
+    -moz-column-count: $flexColumnCountValue;
+    column-count: $flexColumnCountValue;
+}
+
+@mixin prefix-justify-content (
+    $flexJustifyContentValue
+) {
+    -webkit-justify-content: $flexJustifyContentValue;
+    -moz-justify-content: $flexJustifyContentValue;
+    -ms-justify-content: $flexJustifyContentValue;
+    justify-content: $flexJustifyContentValue;
+}

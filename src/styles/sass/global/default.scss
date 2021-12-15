@@ -1,0 +1,43 @@
+html {
+    font-size: 62.5%; /* Sets up the Base 10 stuff */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+body {
+    @include lib-font-size(1.4);
+    font-family: $primary-font;
+    color: $codgray;
+    background-color: $mineshaft;
+}
+
+.page-wrapper {
+    @include max-width-config(800px);
+    display: table;
+    width: 100%;
+    height: 100vh;
+    background-color: $concrete;
+}
+
+.inner-container {
+    padding: 0 20px;
+}
+
+h1,
+h2 {
+    font-family: $primary-font;
+    font-weight: 700;
+}
+
+h1 {
+    @include lib-font-size(4);
+}
+
+h2 {
+    @include lib-font-size(3.6);
+}
+
+h3 {
+    @include lib-font-size(3);
+}

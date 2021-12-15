@@ -1,0 +1,51 @@
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type=text],
+input[type=password],
+input[type=date],
+input[type=email],
+textarea,
+select {
+    @include lib-font-size(1.4);
+    display: block;
+    width: 100%;
+    padding: 20px 12px;
+
+    &:focus {
+        border-radius: 0;
+        border-color: $codgray;
+        outline: thin $persimmon;
+    }
+}
+
+input[type=checkbox] {
+    cursor: pointer;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field.checkbox {
+    display: table;
+
+    label,
+    input {
+        display: table-cell;
+        vertical-align: baseline;
+        line-height: 2;
+    }
+
+    input {
+        margin-left: 10px;
+        vertical-align: -1px;
+    }
+
+    &.hidden {
+        display: none;
+    }
+}

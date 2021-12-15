@@ -1,0 +1,58 @@
+.todo-list-container {
+    margin: 20px 0;
+
+    .todo-item {
+        @include prefix-display();
+        @include prefix-box-align(center);
+        position: relative;
+        padding: 20px;
+        margin-bottom: 10px;
+        background-color: $white;
+
+        .todo-details {
+            margin-left: 20px;
+        }
+
+        h3,
+        p {
+            margin: 0;
+        }
+
+        button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        &.checked {
+            h3,
+            p {
+                opacity: 0.6;
+                text-decoration: line-through;
+            }
+        }
+    }
+}
+
+.show-form {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+    &.active {
+        max-height: 500px;
+        transition: max-height 0.2s ease-in;
+    }
+}
+
+.add-form {
+    display: table;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: $white;
+
+    .btn-submit  {
+        float: right;
+    }
+}
